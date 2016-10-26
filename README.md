@@ -1,2 +1,2 @@
 # tese
-Text Serializer
+A text-based serializer library for Java applications
