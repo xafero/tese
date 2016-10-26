@@ -11,6 +11,7 @@ public class Customer {
 	private String lastName;
 	private double money;
 	private boolean male;
+	private Address home;
 	private char sex;
 	private int houses;
 	private short pets;
@@ -24,7 +25,7 @@ public class Customer {
 	}
 
 	public Customer(long id, String firstName, String lastName, double money, boolean male, char sex, int houses,
-			short pets, float crazyness, byte bits, BigInteger sleep, BigDecimal awake, Date birth) {
+			short pets, float crazyness, byte bits, BigInteger sleep, BigDecimal awake, Date birth, Address home) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -38,6 +39,7 @@ public class Customer {
 		this.sleep = sleep;
 		this.awake = awake;
 		this.birth = birth;
+		this.home = home;
 	}
 
 	public long getId() {
@@ -92,6 +94,10 @@ public class Customer {
 		return birth;
 	}
 
+	public Address getHome() {
+		return home;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -142,5 +148,9 @@ public class Customer {
 
 	public void setBirth(Date birth) {
 		this.birth = birth;
+	}
+
+	public void setHome(Address home) {
+		this.home = home;
 	}
 }
