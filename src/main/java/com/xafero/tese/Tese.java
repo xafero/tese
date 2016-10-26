@@ -45,6 +45,8 @@ public class Tese {
 			String key = field.getName();
 			String objKey = String.format("%s.%s", prefix, key);
 			String val = props.getProperty(objKey);
+			if (val == null)
+				return;
 			field.setAccessible(true);
 			field.set(obj, fromStr(val, field));
 		} catch (IllegalArgumentException | IllegalAccessException e) {
@@ -55,6 +57,10 @@ public class Tese {
 	private Object fromStr(String val, Field field) {
 		Class<?> type = field.getType();
 		switch (type.getName()) {
+		case "boolean":
+			return Boolean.parseBoolean(val);
+		case "double":
+			return Double.parseDouble(val);
 		case "long":
 			return Long.parseLong(val);
 		case "java.lang.String":

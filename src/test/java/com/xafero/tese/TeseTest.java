@@ -22,11 +22,14 @@ public class TeseTest {
 
 	@Test
 	public void testDeserialize() {
-		String txt = "Customer.lastName=Johnson ~ Customer.firstName=Harry ~ Customer.id=1";
+		String txt = "Customer.lastName=Johnson ~ " + "Customer.money=123.89 ~ "
+				+ "Customer.firstName=Harry ~ Customer.id=1 ~ " + "Customer.male=true";
 		Customer cus = tese.deserialize(deflatten(txt), Customer.class);
 		assertEquals(1, cus.getId());
 		assertEquals("Harry", cus.getFirstName());
 		assertEquals("Johnson", cus.getLastName());
+		assertEquals(123.89, cus.getMoney(), 0.0);
+		assertEquals(true, cus.isMale());
 	}
 
 	private String deflatten(String txt) {
@@ -37,9 +40,10 @@ public class TeseTest {
 
 	@Test
 	public void testSerialize() {
-		Customer cus = new Customer(1, "Harry", "Johnson");
+		Customer cus = new Customer(1, "Harry", "Johnson", 123.89, true);
 		String txt = flatten(tese.serialize(cus));
-		assertEquals("Customer.lastName=Johnson ~ Customer.firstName=Harry ~ Customer.id=1", txt);
+		assertEquals("Customer.lastName=Johnson ~ " + "Customer.money=123.89 ~ "
+				+ "Customer.firstName=Harry ~ Customer.id=1 ~ " + "Customer.male=true", txt);
 	}
 
 	private String flatten(String txt) {
