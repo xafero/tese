@@ -8,7 +8,11 @@ import java.io.Writer;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
+
+import javax.xml.bind.DatatypeConverter;
 
 public class Tese {
 
@@ -79,6 +83,9 @@ public class Tese {
 			return new BigInteger(val);
 		case "java.math.BigDecimal":
 			return new BigDecimal(val);
+		case "java.util.Date":
+			Calendar cal = DatatypeConverter.parseDateTime(val);
+			return cal.getTime();
 		case "java.lang.String":
 			return val;
 		default:
@@ -123,6 +130,14 @@ public class Tese {
 	}
 
 	private String toStr(Object value, Field field) {
-		return value + "";
+		Class<?> type = field.getType();
+		switch (type.getName()) {
+		case "java.util.Date":
+			Calendar cal = Calendar.getInstance();
+			cal.setTime((Date) value);
+			return DatatypeConverter.printDateTime(cal);
+		default:
+			return value + "";
+		}
 	}
 }

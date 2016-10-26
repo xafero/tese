@@ -2,6 +2,7 @@ package com.xafero.tese;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Date;
 
 public class Customer {
 
@@ -17,12 +18,13 @@ public class Customer {
 	private byte bits;
 	private BigInteger sleep;
 	private BigDecimal awake;
+	private Date birth;
 
 	public Customer() {
 	}
 
 	public Customer(long id, String firstName, String lastName, double money, boolean male, char sex, int houses,
-			short pets, float crazyness, byte bits, BigInteger sleep, BigDecimal awake) {
+			short pets, float crazyness, byte bits, BigInteger sleep, BigDecimal awake, Date birth) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -35,6 +37,7 @@ public class Customer {
 		this.bits = bits;
 		this.sleep = sleep;
 		this.awake = awake;
+		this.birth = birth;
 	}
 
 	public long getId() {
@@ -85,6 +88,10 @@ public class Customer {
 		return awake;
 	}
 
+	public Date getBirth() {
+		return birth;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -131,5 +138,9 @@ public class Customer {
 
 	public void setAwake(BigDecimal awake) {
 		this.awake = awake;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 }

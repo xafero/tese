@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Date;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,7 +24,7 @@ public class TeseTest {
 		tese = null;
 	}
 
-	private final String txt1 = "Customer.money=123.89 ~ Customer.sex=m ~ Customer.firstName=Harry ~ Customer.houses=42 ~ Customer.pets=13 ~ Customer.lastName=Johnson ~ Customer.crazyness=97.5 ~ Customer.id=1 ~ Customer.sleep=10 ~ Customer.male=true ~ Customer.awake=1 ~ Customer.bits=7";
+	private final String txt1 = "Customer.money=123.89 ~ Customer.sex=m ~ Customer.firstName=Harry ~ Customer.houses=42 ~ Customer.pets=13 ~ Customer.lastName=Johnson ~ Customer.crazyness=97.5 ~ Customer.id=1 ~ Customer.sleep=10 ~ Customer.male=true ~ Customer.birth=1970-02-19T02\\:17\\:29.348+01\\:00 ~ Customer.awake=1 ~ Customer.bits=7";
 
 	@Test
 	public void testDeserialize() {
@@ -40,6 +41,7 @@ public class TeseTest {
 		assertEquals((byte) 7, cus.getBits());
 		assertEquals(BigInteger.TEN, cus.getSleep());
 		assertEquals(BigDecimal.ONE, cus.getAwake());
+		assertEquals(4238249348L, cus.getBirth().getTime());
 	}
 
 	private String deflatten(String txt) {
@@ -51,7 +53,7 @@ public class TeseTest {
 	@Test
 	public void testSerialize() {
 		Customer cus = new Customer(1, "Harry", "Johnson", 123.89, true, 'm', 42, (short) 13, 97.5f, (byte) 7,
-				BigInteger.TEN, BigDecimal.ONE);
+				BigInteger.TEN, BigDecimal.ONE, new Date(4238249348L));
 		String txt = flatten(tese.serialize(cus));
 		assertEquals(txt1, txt);
 	}
