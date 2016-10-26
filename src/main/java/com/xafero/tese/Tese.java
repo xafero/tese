@@ -59,8 +59,12 @@ public class Tese {
 		switch (type.getName()) {
 		case "boolean":
 			return Boolean.parseBoolean(val);
+		case "char":
+			return val.charAt(0);
 		case "double":
 			return Double.parseDouble(val);
+		case "int":
+			return Integer.parseInt(val);
 		case "long":
 			return Long.parseLong(val);
 		case "java.lang.String":

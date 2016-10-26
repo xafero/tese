@@ -22,14 +22,16 @@ public class TeseTest {
 
 	@Test
 	public void testDeserialize() {
-		String txt = "Customer.lastName=Johnson ~ " + "Customer.money=123.89 ~ "
-				+ "Customer.firstName=Harry ~ Customer.id=1 ~ " + "Customer.male=true";
+		String txt = "Customer.sex=m ~ " + "Customer.lastName=Johnson ~ " + "Customer.money=123.89 ~ "
+				+ "Customer.houses=42 ~ " + "Customer.firstName=Harry ~ Customer.id=1 ~ " + "Customer.male=true";
 		Customer cus = tese.deserialize(deflatten(txt), Customer.class);
 		assertEquals(1, cus.getId());
 		assertEquals("Harry", cus.getFirstName());
 		assertEquals("Johnson", cus.getLastName());
 		assertEquals(123.89, cus.getMoney(), 0.0);
 		assertEquals(true, cus.isMale());
+		assertEquals('m', cus.getSex());
+		assertEquals(42, cus.getHouses());
 	}
 
 	private String deflatten(String txt) {
@@ -40,10 +42,10 @@ public class TeseTest {
 
 	@Test
 	public void testSerialize() {
-		Customer cus = new Customer(1, "Harry", "Johnson", 123.89, true);
+		Customer cus = new Customer(1, "Harry", "Johnson", 123.89, true, 'm', 42);
 		String txt = flatten(tese.serialize(cus));
-		assertEquals("Customer.lastName=Johnson ~ " + "Customer.money=123.89 ~ "
-				+ "Customer.firstName=Harry ~ Customer.id=1 ~ " + "Customer.male=true", txt);
+		assertEquals("Customer.sex=m ~ " + "Customer.lastName=Johnson ~ " + "Customer.money=123.89 ~ "
+				+ "Customer.houses=42 ~ " + "Customer.firstName=Harry ~ Customer.id=1 ~ " + "Customer.male=true", txt);
 	}
 
 	private String flatten(String txt) {

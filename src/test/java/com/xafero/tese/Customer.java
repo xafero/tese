@@ -7,16 +7,20 @@ public class Customer {
 	private String lastName;
 	private double money;
 	private boolean male;
+	private char sex;
+	private int houses;
 
 	public Customer() {
 	}
 
-	public Customer(long id, String firstName, String lastName, double money, boolean male) {
+	public Customer(long id, String firstName, String lastName, double money, boolean male, char sex, int houses) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.money = money;
 		this.male = male;
+		this.sex = sex;
+		this.houses = houses;
 	}
 
 	public long getId() {
@@ -39,6 +43,14 @@ public class Customer {
 		return male;
 	}
 
+	public char getSex() {
+		return sex;
+	}
+
+	public int getHouses() {
+		return houses;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -57,5 +69,13 @@ public class Customer {
 
 	public void setMale(boolean male) {
 		this.male = male;
+	}
+
+	public void setSex(char sex) {
+		this.sex = sex;
+	}
+
+	public void setHouses(int houses) {
+		this.houses = houses;
 	}
 }
