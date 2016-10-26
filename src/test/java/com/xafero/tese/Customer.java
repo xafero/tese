@@ -1,5 +1,8 @@
 package com.xafero.tese;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class Customer {
 
 	private long id;
@@ -9,11 +12,17 @@ public class Customer {
 	private boolean male;
 	private char sex;
 	private int houses;
+	private short pets;
+	private float crazyness;
+	private byte bits;
+	private BigInteger sleep;
+	private BigDecimal awake;
 
 	public Customer() {
 	}
 
-	public Customer(long id, String firstName, String lastName, double money, boolean male, char sex, int houses) {
+	public Customer(long id, String firstName, String lastName, double money, boolean male, char sex, int houses,
+			short pets, float crazyness, byte bits, BigInteger sleep, BigDecimal awake) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -21,6 +30,11 @@ public class Customer {
 		this.male = male;
 		this.sex = sex;
 		this.houses = houses;
+		this.pets = pets;
+		this.crazyness = crazyness;
+		this.bits = bits;
+		this.sleep = sleep;
+		this.awake = awake;
 	}
 
 	public long getId() {
@@ -51,6 +65,26 @@ public class Customer {
 		return houses;
 	}
 
+	public short getPets() {
+		return pets;
+	}
+
+	public float getCrazyness() {
+		return crazyness;
+	}
+
+	public byte getBits() {
+		return bits;
+	}
+
+	public BigInteger getSleep() {
+		return sleep;
+	}
+
+	public BigDecimal getAwake() {
+		return awake;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -77,5 +111,25 @@ public class Customer {
 
 	public void setHouses(int houses) {
 		this.houses = houses;
+	}
+
+	public void setPets(short pets) {
+		this.pets = pets;
+	}
+
+	public void setCrazyness(float crazyness) {
+		this.crazyness = crazyness;
+	}
+
+	public void setBits(byte bits) {
+		this.bits = bits;
+	}
+
+	public void setSleep(BigInteger sleep) {
+		this.sleep = sleep;
+	}
+
+	public void setAwake(BigDecimal awake) {
+		this.awake = awake;
 	}
 }

@@ -6,6 +6,8 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Properties;
 
 public class Tese {
@@ -59,14 +61,24 @@ public class Tese {
 		switch (type.getName()) {
 		case "boolean":
 			return Boolean.parseBoolean(val);
+		case "byte":
+			return Byte.parseByte(val);
 		case "char":
 			return val.charAt(0);
+		case "float":
+			return Float.parseFloat(val);
 		case "double":
 			return Double.parseDouble(val);
 		case "int":
 			return Integer.parseInt(val);
+		case "short":
+			return Short.parseShort(val);
 		case "long":
 			return Long.parseLong(val);
+		case "java.math.BigInteger":
+			return new BigInteger(val);
+		case "java.math.BigDecimal":
+			return new BigDecimal(val);
 		case "java.lang.String":
 			return val;
 		default:
